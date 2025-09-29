@@ -31,6 +31,14 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+html {
+	scroll-behavior: smooth;
+}
+
+html {
+	scroll-padding-top: 80px;
+}
+
 html,
 body {
 	height: 100%;
@@ -540,6 +548,10 @@ ol {
   Gallery
 -----------------------*/
 
+.gallery {
+	padding-top: 230px;
+}
+
 .gallery__pic img {
 	min-width: 100%;
 }
@@ -854,6 +866,7 @@ ol {
 -----------------------*/
 
 .home-about {
+	padding-top: 140px;
 	padding-bottom: 0;
 }
 
@@ -2819,6 +2832,39 @@ ol {
 
 .header__model_new ul li a:hover {
     color: #598176;
+}
+
+.calisthenics-btn {
+    position: relative;
+}
+
+.calisthenics-btn a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.calisthenics-btn a:hover {
+    color: #598176;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+    transition: all 0.3s ease;
+    vertical-align: middle;
+}
+
+.home-btn a:hover .nav-icon,
+.about-btn a:hover .nav-icon,
+.gallery-btn a:hover .nav-icon,
+.pilates-btn a:hover .nav-icon,
+.calisthenics-btn a:hover .nav-icon,
+.contact-btn a:hover .nav-icon {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
 }
 
 .canvas__open {
