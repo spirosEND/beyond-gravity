@@ -135,5 +135,50 @@
         barColor: "#5768AD",
     });
 
+    /*------------------
+		Gallery Modal
+	--------------------*/
+    // Get the modal
+    var modal = document.getElementById('galleryModal');
+    var modalImg = document.getElementById('modalImg');
+
+    // Get all gallery items
+    var galleryItems = document.querySelectorAll('.gallery__item');
+
+    // Add click event to each gallery item
+    galleryItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var imgSrc = this.getAttribute('data-src');
+            modal.style.display = 'block';
+            modalImg.src = imgSrc;
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+
+    // Get the close button
+    var closeBtn = document.querySelector('.gallery-modal__close');
+
+    // Close modal when clicking the close button
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore background scrolling
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+        }
+    });
+
 
 })(jQuery);
