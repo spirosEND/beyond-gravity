@@ -67,29 +67,6 @@
         autoplay: false
     });
 
-    /*-----------------------------
-        Team Slider
-    -------------------------------*/
-    $(".team__slider").owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 2,
-        dots: false,
-        nav: true,
-        navText: ["<span class='arrow_left'><span/>", "<span class='arrow_right'><span/>"],
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-        responsive: {
-
-            320: {
-                items: 1
-            },
-            768: {
-                items: 2
-            }
-        }
-    });
 
     /*--------------------------
         Select
@@ -180,5 +157,27 @@
         }
     });
 
+    /*------------------
+        Back to Top Button
+    --------------------*/
+    // Get the button
+    var backToTopButton = document.getElementById("backToTop");
+
+    // Show the button when the user scrolls down 300px from the top
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+
+    // Scroll to the top when the button is clicked
+    backToTopButton.onclick = function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
 
 })(jQuery);
