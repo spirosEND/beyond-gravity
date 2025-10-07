@@ -822,7 +822,7 @@ ol {
 }
 
 .footer__about ul li {
-	color: #9B9EA3;
+	color: #E0E0E0;
 	line-height: 37px;
 	font-size: 16px;
 	list-style: none;
@@ -878,14 +878,14 @@ ol {
 
 .footer__widget ul li a {
 	font-size: 16px;
-	color: #9B9EA3;
+	color: #E0E0E0;
 	line-height: 37px;
 }
 
 .footer__widget .footer-address li {
 	list-style: none;
 	font-size: 16px;
-	color: #9B9EA3;
+	color: #E0E0E0;
 	line-height: 37px;
 }
 
@@ -2252,7 +2252,7 @@ ol {
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 20px 0;
+    padding: 10px 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
 }
