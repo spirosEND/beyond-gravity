@@ -9,10 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Beyond Gravity - Pilates & Calisthenics Studio</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Font - Optimized loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Styles -->
     <!-- Bootstrap Framework -->
@@ -41,9 +41,9 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" as="style">
     
     <!-- Defer non-critical about images -->
-    <link rel="preload" as="image" href="img/about/welcome1.webp" onerror="this.href='img/about/welcome1.jpg'" media="(min-width: 768px)">
-    <link rel="preload" as="image" href="img/about/welcome2.webp" onerror="this.href='img/about/welcome2.jpg'" media="(min-width: 768px)">
-    <link rel="preload" as="image" href="img/about/welcome3.webp" onerror="this.href='img/about/welcome3.jpg'" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="img/about/welcome1.webp" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="img/about/welcome2.webp" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="img/about/welcome3.webp" media="(min-width: 768px)">
     
     <!-- Critical CSS for above-the-fold content -->
     <style>
@@ -84,6 +84,8 @@
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!-- Performance Styles -->
+    <link rel="stylesheet" href="css/performance-styles.css" type="text/css">
     
 </head>
 
@@ -171,10 +173,10 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="home__about__pic">
-                        <div class="home__about__pic__item large-item set-bg" data-setbg="img/about/welcome1.webp" style="background-image: url('img/about/welcome1.webp'), url('img/about/welcome1.jpg');"></div>
+                        <div class="home__about__pic__item large-item set-bg" data-setbg="img/about/welcome1.webp" style="background-image: url('img/about/welcome1.webp');"></div>
                         <div class="home__about__pic__item">
-                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome2.webp" style="background-image: url('img/about/welcome2.webp'), url('img/about/welcome2.jpg');"></div>
-                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome3.webp" style="background-image: url('img/about/welcome3.webp'), url('img/about/welcome3.jpg');"></div>
+                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome2.webp" style="background-image: url('img/about/welcome2.webp');"></div>
+                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome3.webp" style="background-image: url('img/about/welcome3.webp');"></div>
                         </div>
                     </div>
                 </div>
@@ -213,7 +215,7 @@
         <div class="container">
             <div class="gallery__masonry">
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0221.jpg">
-                    <img src="img/gallery2/0221.jpg" alt="Gallery Image" loading="lazy">
+                    <img src="img/gallery2/0221.jpg" alt="Pilates and Calisthenics training session" loading="lazy" width="300" height="400">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0063.jpg">
                     <img src="img/gallery2/0063.jpg" alt="Gallery Image" loading="lazy">
@@ -378,7 +380,7 @@
                         <div class="pilates__image">
                             <picture>
                                 <source srcset="img/about/welcome1.webp" type="image/webp">
-                                <img src="img/about/welcome1.jpg" alt="Pilates Class" class="main__image">
+                                <img src="img/about/welcome1.JPG" alt="Pilates Class" class="main__image">
                             </picture>
                         </div>
                     </div>
@@ -626,15 +628,18 @@
     <!-- Back to Top Button -->
     <button id="backToTop" title="Go to top" aria-label="Back to top">↑</button>
 
-    <!-- Js Plugins -->
+    <!-- Performance Monitor - Load First -->
+    <script src="js/performance-monitor.js"></script>
+    
+    <!-- Js Plugins - Optimized Loading -->
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/navigation.js"></script>
+    <script src="js/bootstrap.min.js" defer></script>
+    <script src="js/jquery.nice-select.min.js" defer></script>
+    <script src="js/jquery.barfiller.js" defer></script>
+    <script src="js/jquery.slicknav.js" defer></script>
+    <script src="js/owl.carousel.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/navigation.js" defer></script>
 </body>
 
 </html>

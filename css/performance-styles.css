@@ -1,0 +1,61 @@
+/* ===========================================
+   Beyond Gravity - Safe Performance Styles
+   =========================================== */
+
+/* Performance optimizations that don't affect navigation */
+
+/* Optimize image loading */
+img[loading="lazy"] {
+    transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Optimize gallery modal performance */
+.gallery-modal {
+    backdrop-filter: blur(5px);
+}
+
+/* Optimize back to top button */
+#backToTop {
+    transition: all 0.3s ease;
+}
+
+#backToTop:hover {
+    transform: translateY(-2px);
+}
+
+/* Reduce layout shifts */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .gallery-modal__content {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    #backToTop {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
