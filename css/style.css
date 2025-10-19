@@ -32,8 +32,386 @@
 /*----------------------------------------*/
 
 html {
-	scroll-behavior: smooth;
-	scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+}
+
+/*---------------------
+  Custom Beyond Gravity Styles
+-----------------------*/
+
+/* Pilates Section Styles */
+.pilates-section {
+    background: #f5f5f5;
+    padding: 80px 0;
+}
+
+/* Override spad class for pilates section to prevent button cutoff */
+#pilates-section.spad {
+    padding-top: 15px; /* Even more reduced to account for header offset */
+    padding-bottom: 15px; /* Even more reduced to ensure button is fully visible */
+}
+
+/* Add extra margin to Pilates button to ensure it's visible */
+#pilates-section .pilates__cta .primary-btn {
+    margin-bottom: 15px; /* Extra margin to push button up from bottom edge */
+}
+
+.pilates__badge {
+    display: inline-block;
+    background: #598176;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pilates__content h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #263246;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.pilates__content p {
+    font-size: 1rem;
+    color: #6E7580;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.pilates__features {
+    margin-bottom: 40px;
+}
+
+.feature__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.feature__item:last-child {
+    border-bottom: none;
+}
+
+.feature__icon {
+    width: 30px;
+    height: 30px;
+    background: #598176;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.feature__icon i {
+    color: white;
+    font-size: 12px;
+}
+
+.feature__text h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #263246;
+    margin-bottom: 5px;
+}
+
+.feature__text p {
+    color: #6E7580;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.pilates__cta .primary-btn {
+    background: #598176;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.pilates__cta .primary-btn:hover {
+    background: #4a6b5f;
+    color: white;
+    text-decoration: none;
+}
+
+.pilates__image__wrapper {
+    position: relative;
+}
+
+.pilates__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(89, 129, 118, 0.2);
+    background: #598176;
+    padding: 0;
+    position: relative;
+}
+
+.pilates__image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(89, 129, 118, 0.1) 0%, rgba(89, 129, 118, 0.05) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.pilates__image .main__image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    object-position: center bottom;
+}
+
+.pilates__image:hover .main__image {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Calisthenics Section Styles */
+.calisthenics-section {
+    background: white;
+    padding: 80px 0;
+}
+
+/* Override spad class for calisthenics section to prevent button cutoff */
+#calisthenics-section.spad {
+    padding-top: 60px; /* Reduced to account for header offset */
+    padding-bottom: 60px; /* Reduced to ensure button is visible */
+}
+
+.calisthenics__badge {
+    display: inline-block;
+    background: #598176;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.calisthenics__content h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #263246;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.calisthenics__content p {
+    font-size: 1rem;
+    color: #6E7580;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.calisthenics__features .feature__item {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.calisthenics__features .feature__icon {
+    background: #598176;
+}
+
+.calisthenics__cta .primary-btn {
+    background: #598176;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.calisthenics__cta .primary-btn:hover {
+    background: #4a6b5f;
+    color: white;
+    text-decoration: none;
+}
+
+.calisthenics__image__wrapper {
+    position: relative;
+}
+
+.calisthenics__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(89, 129, 118, 0.2);
+    background: #598176;
+    padding: 0;
+    position: relative;
+}
+
+.calisthenics__image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(89, 129, 118, 0.1) 0%, rgba(89, 129, 118, 0.05) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.calisthenics__image .main__image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    object-position: center bottom;
+    filter: contrast(1.1) brightness(1.05) saturate(1.1) sharpness(1.2);
+}
+
+.calisthenics__image:hover .main__image {
+    transform: scale(1.05);
+    filter: brightness(1.15) contrast(1.15) saturate(1.2) sharpness(1.3);
+}
+
+/* ===========================================
+   ACCESSIBILITY UTILITIES
+   =========================================== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Pixel-Perfect Scroll Offset for Fixed Header */
+[id] {
+    scroll-margin-top: 80px; /* Exact header height for perfect alignment */
+}
+
+/* Responsive adjustments for different header heights */
+@media (max-width: 768px) {
+    [id] { 
+        scroll-margin-top: 60px; /* Mobile header height */
+    }
+    
+    /* Mobile adjustments for section padding */
+    #pilates-section.spad {
+        padding-top: 20px; /* Much more reduced for mobile Pilates */
+        padding-bottom: 20px; /* Much more reduced for mobile Pilates */
+    }
+    
+    /* Extra margin for Pilates button on mobile */
+    #pilates-section .pilates__cta .primary-btn {
+        margin-bottom: 25px; /* Extra margin on mobile */
+    }
+    
+    #calisthenics-section.spad {
+        padding-top: 40px; /* Keep Calisthenics as is since it's fixed */
+        padding-bottom: 40px; /* Keep Calisthenics as is since it's fixed */
+    }
+}
+
+@media (min-width: 769px) {
+    [id] { 
+        scroll-margin-top: 80px; /* Desktop header height */
+    }
+}
+
+/* Contact CTA Button Styling */
+.contact__cta {
+    margin-top: 40px;
+    padding: 20px 0 0px 0; /* Removed bottom padding completely */
+}
+
+.appointment-btn {
+    display: inline-flex !important; /* Override any conflicting display */
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #598176, #4a6b5f) !important; /* Override primary-btn background */
+    border: none;
+    box-shadow: 0 4px 15px rgba(89, 129, 118, 0.3);
+    margin-bottom: 5px; /* Minimal margin below button */
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+    pointer-events: auto !important;
+    text-decoration: none;
+    color: white !important; /* Override any conflicting color */
+}
+
+.appointment-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(89, 129, 118, 0.4);
+    background: linear-gradient(135deg, #4a6b5f, #3d5a4f);
+}
+
+.appointment-btn i {
+    font-size: 18px;
+}
+
+/* Responsive button adjustments */
+@media (max-width: 768px) {
+    .contact__cta {
+        margin-top: 30px;
+        padding: 15px 0 0px 0; /* No bottom padding on mobile */
+    }
+    
+    .appointment-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+        margin-bottom: 0px; /* No margin on mobile */
+    }
+    
+    .feature__item {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .feature__icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
 
 /* Back to Top Button */
@@ -2247,14 +2625,15 @@ ol {
 }
 
 .header__container_new {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1000;
     padding: 10px 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
 .header__logo_new {

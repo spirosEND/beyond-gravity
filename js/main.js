@@ -1,10 +1,10 @@
 /*  ---------------------------------------------------
-    Template Name: Zogin
-    Description:  Phozogy Yoga HTML Template
-    Author: Colorlib
-    Author URI: https://colorlib.com
+    Beyond Gravity - Main JavaScript Functionality
+    Description: Core functionality for Beyond Gravity fitness studio website
+    Features: Preloader, background images, mobile menu, gallery modal, back-to-top
+    Author: binarySOUL
     Version: 1.0
-    Created: Colorlib
+    Created: 2025
 ---------------------------------------------------------  */
 
 'use strict';
@@ -16,37 +16,40 @@
     --------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
-        $("#preloder").delay(200).fadeOut("slow");
+        $("#preloader").delay(200).fadeOut("slow");
     });
 
     /*------------------
         Background Set
     --------------------*/
     $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
+        try {
+            const bg = $(this).data('set-bg');
+            if (bg && bg.trim() !== '') {
+                $(this).css('background-image', 'url(' + bg + ')');
+            } else {
+                console.warn('Background image data not found for element:', this);
+            }
+        } catch (error) {
+            console.error('Error setting background image:', error);
+        }
     });
 
-    //Canvas Menu
-    $(".canvas__open").on('click', function () {
-        $(".offcanvas-menu").addClass("show-offcanvas-menu");
-        $(".offcanvas-menu-overlay").addClass("active");
-        $("body").addClass("over-hid");
-    });
-
-    $(".offcanvas-menu-overlay").on('click', function () {
-        $(".offcanvas-menu").removeClass("show-offcanvas-menu");
-        $(".offcanvas-menu-overlay").removeClass("active");
-        $("body").removeClass("over-hid");
-    });
+    //Canvas Menu - Now handled by navigation.js
 
     /*------------------
 		Navigation
 	--------------------*/
-    $(".mobile-menu").slicknav({
-        prependTo: '#mobile-menu-wrap',
-        allowParentLinks: true
-    });
+    try {
+        if ($(".mobile-menu").length > 0) {
+            $(".mobile-menu").slicknav({
+                prependTo: '#mobile-menu-wrap',
+                allowParentLinks: true
+            });
+        }
+    } catch (error) {
+        console.error('Error initializing mobile menu:', error);
+    }
 
     /*------------------
         Hero Static
@@ -56,33 +59,43 @@
     /*--------------------------
     Testimonial Slider
     ----------------------------*/
-    var testimonialSlider = $(".testimonial__slider");
-    testimonialSlider.owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 1,
-        dots: true,
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: false
-    });
+    try {
+        const testimonialSlider = $(".testimonial__slider");
+        if (testimonialSlider.length > 0) {
+            testimonialSlider.owlCarousel({
+                loop: true,
+                margin: 0,
+                items: 1,
+                dots: true,
+                smartSpeed: 1200,
+                autoHeight: false,
+                autoplay: false
+            });
+        }
+    } catch (error) {
+        console.error('Error initializing testimonial slider:', error);
+    }
 
 
     /*--------------------------
         Select
     ----------------------------*/
-    $(".class-select").niceSelect();
-    $("select").niceSelect();
+    try {
+        // Initialize all select elements (including .class-select)
+        $("select").niceSelect();
+    } catch (error) {
+        console.error('Error initializing select dropdowns:', error);
+    }
 
     /*------------------
-        Accordin Active
+        Accordion Active
     --------------------*/
-    $('.collapse').on('shown.bs.collapse', function () {
-        $(this).prev().addClass('active');
-    });
-
-    $('.collapse').on('hidden.bs.collapse', function () {
-        $(this).prev().removeClass('active');
+    $('.collapse').on('shown.bs.collapse hidden.bs.collapse', function (e) {
+        if (e.type === 'shown.bs.collapse') {
+            $(this).prev().addClass('active');
+        } else {
+            $(this).prev().removeClass('active');
+        }
     });
 
     /*------------------
@@ -94,90 +107,141 @@
     });
 
     /*------------------
-		Barfiller
+		Bar Filler
 	--------------------*/
-    $('#bar1').barfiller({
-        barColor: "#5768AD",
-    });
-
-    $('#bar2').barfiller({
-        barColor: "#5768AD",
-    });
-
-    $('#bar3').barfiller({
-        barColor: "#5768AD",
-    });
-
-    $('#bar4').barfiller({
+    // Initialize all bar elements with the same configuration
+    $('#bar1, #bar2, #bar3, #bar4').barfiller({
         barColor: "#5768AD",
     });
 
     /*------------------
 		Gallery Modal
 	--------------------*/
-    // Get the modal
-    var modal = document.getElementById('galleryModal');
-    var modalImg = document.getElementById('modalImg');
+    try {
+        // Get the modal
+        const modal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImg');
 
-    // Get all gallery items
-    var galleryItems = document.querySelectorAll('.gallery__item');
+        if (!modal || !modalImg) {
+            console.warn('Gallery modal elements not found');
+            return;
+        }
 
-    // Add click event to each gallery item
-    galleryItems.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var imgSrc = this.getAttribute('data-src');
-            modal.style.display = 'block';
-            modalImg.src = imgSrc;
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        // Get all gallery items
+        const galleryItems = document.querySelectorAll('.gallery__item');
+
+        // Add click event to each gallery item
+        galleryItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                try {
+                    const imgSrc = this.getAttribute('data-src');
+                    if (imgSrc && imgSrc.trim() !== '') {
+                        modal.style.display = 'block';
+                        modalImg.src = imgSrc;
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    } else {
+                        console.warn('No image source found for gallery item');
+                    }
+                } catch (error) {
+                    console.error('Error opening gallery modal:', error);
+                }
+            });
         });
-    });
 
-    // Get the close button
-    var closeBtn = document.querySelector('.gallery-modal__close');
+        // Get the close button
+        const closeBtn = document.querySelector('.gallery-modal__close');
 
-    // Close modal when clicking the close button
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore background scrolling
-    });
-
-    // Close modal when clicking outside the image
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore background scrolling
+        if (closeBtn) {
+            // Close modal when clicking the close button
+            closeBtn.addEventListener('click', function() {
+                try {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                } catch (error) {
+                    console.error('Error closing gallery modal:', error);
+                }
+            });
         }
-    });
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore background scrolling
-        }
-    });
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            try {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                }
+            } catch (error) {
+                console.error('Error closing gallery modal via overlay:', error);
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            try {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                }
+            } catch (error) {
+                console.error('Error closing gallery modal via keyboard:', error);
+            }
+        });
+    } catch (error) {
+        console.error('Error initializing gallery modal:', error);
+    }
 
     /*------------------
         Back to Top Button
     --------------------*/
-    // Get the button
-    var backToTopButton = document.getElementById("backToTop");
+    try {
+        // Get the button
+        const backToTopButton = document.getElementById("backToTop");
 
-    // Show the button when the user scrolls down 300px from the top
-    window.onscroll = function() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTopButton.style.display = "block";
-        } else {
-            backToTopButton.style.display = "none";
+        if (!backToTopButton) {
+            console.warn('Back to top button not found');
+            return;
         }
-    };
 
-    // Scroll to the top when the button is clicked
-    backToTopButton.onclick = function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
+        // Throttle function for better performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Show the button when the user scrolls down 300px from the top
+        window.onscroll = throttle(function() {
+            try {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopButton.style.display = "block";
+                } else {
+                    backToTopButton.style.display = "none";
+                }
+            } catch (error) {
+                console.error('Error handling scroll event:', error);
+            }
+        }, 100); // Throttle to 100ms
+
+        // Scroll to the top when the button is clicked
+        backToTopButton.onclick = function() {
+            try {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } catch (error) {
+                console.error('Error scrolling to top:', error);
+            }
+        };
+    } catch (error) {
+        console.error('Error initializing back to top button:', error);
+    }
 
 })(jQuery);
