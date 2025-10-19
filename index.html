@@ -30,13 +30,27 @@
     <!-- SlickNav Mobile Menu -->
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <!-- Preload critical images for smoother transitions -->
-    <link rel="preload" as="image" href="img/hero/hero-2.JPG">
-    <link rel="preload" as="image" href="img/about/welcome1.JPG">
-    <link rel="preload" as="image" href="img/about/welcome2.JPG">
-    <link rel="preload" as="image" href="img/about/welcome3.JPG">
+    <!-- Preload WebP first, fallback to JPG -->
+    <link rel="preload" as="image" href="img/hero/hero-2.webp" onerror="this.href='img/hero/hero-2.JPG'">
+    <link rel="preload" as="image" href="img/about/welcome1.webp" onerror="this.href='img/about/welcome1.jpg'">
+    <link rel="preload" as="image" href="img/about/welcome2.webp" onerror="this.href='img/about/welcome2.jpg'">
+    <link rel="preload" as="image" href="img/about/welcome3.webp" onerror="this.href='img/about/welcome3.jpg'">
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    <!-- Image format detection -->
+    <script>
+        // Check if WebP is supported
+        function checkWebPSupport() {
+            const webp = new Image();
+            webp.onload = webp.onerror = function() {
+                console.log('WebP support:', webp.height === 2);
+            };
+            webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }
+        checkWebPSupport();
+    </script>
 </head>
 
 <body>
@@ -123,10 +137,10 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="home__about__pic">
-                        <div class="home__about__pic__item large-item set-bg" data-setbg="img/about/welcome1.JPG" style="background-image: url('img/about/welcome1.webp'), url('img/about/welcome1.JPG');"></div>
+                        <div class="home__about__pic__item large-item set-bg" data-setbg="img/about/welcome1.jpg" style="background-image: url('img/about/welcome1.webp'), url('img/about/welcome1.jpg');"></div>
                         <div class="home__about__pic__item">
-                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome2.JPG" style="background-image: url('img/about/welcome2.webp'), url('img/about/welcome2.JPG');"></div>
-                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome3.JPG" style="background-image: url('img/about/welcome3.webp'), url('img/about/welcome3.JPG');"></div>
+                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome2.jpg" style="background-image: url('img/about/welcome2.webp'), url('img/about/welcome2.jpg');"></div>
+                            <div class="home__about__pic__item__inner set-bg" data-setbg="img/about/welcome3.jpg" style="background-image: url('img/about/welcome3.webp'), url('img/about/welcome3.jpg');"></div>
                         </div>
                     </div>
                 </div>
