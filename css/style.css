@@ -1447,6 +1447,11 @@ ol {
 	background-position: center;
 	background-repeat: no-repeat;
 	will-change: transform;
+	/* Image optimization */
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	backface-visibility: hidden;
+	transform: translateZ(0);
 }
 
 .home__about__pic__item__inner {
@@ -1456,6 +1461,11 @@ ol {
 	background-position: center;
 	background-repeat: no-repeat;
 	will-change: transform;
+	/* Image optimization */
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	backface-visibility: hidden;
+	transform: translateZ(0);
 }
 
 .home__about__pic__item__inner:first-child {
@@ -2818,6 +2828,7 @@ ol {
     min-height: 600px;
 }
 
+/* Hero Image Optimization */
 .hero__items_new {
     position: relative;
     height: 100vh;
@@ -2827,6 +2838,11 @@ ol {
     background-position: center;
     background-repeat: no-repeat;
     will-change: transform;
+    /* Image optimization */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .hero__overlay_new {
