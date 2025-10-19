@@ -2921,4 +2921,94 @@
 	    padding-top: 15vh;
 	  }
   }
+
+/* Form Messages and Loading States */
+.form-messages {
+    margin-top: 30px;
+    padding: 0;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #598176, #4a6b5f);
+    color: #ffffff;
+    border: 2px solid #598176;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 0 auto;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(89, 129, 118, 0.3);
+}
+
+.error-message {
+    background: linear-gradient(135deg, #6E7580, #263246);
+    color: #ffffff;
+    border: 2px solid #6E7580;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 0 auto;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(110, 117, 128, 0.3);
+}
+
+.form-messages i {
+    font-size: 32px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.success-message i {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.error-message i {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-messages p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#submitBtn {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-loading {
+    display: none;
+}
+
+#submitBtn.loading .btn-text {
+    display: none;
+}
+
+#submitBtn.loading .btn-loading {
+    display: inline;
+}
+
+/* Form validation styles */
+.appointment__form input:invalid,
+.appointment__form select:invalid,
+.appointment__form textarea:invalid {
+    border-color: #dc3545;
+}
+
+.appointment__form input:valid,
+.appointment__form select:valid,
+.appointment__form textarea:valid {
+    border-color: #28a745;
+}
   
