@@ -159,6 +159,8 @@
     background: #598176;
     padding: 0;
     position: relative;
+    height: 450px !important;
+    max-height: 450px !important;
 }
 
 .pilates__image::before {
@@ -174,14 +176,16 @@
 }
 
 .pilates__image .main__image {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
+    width: 100% !important;
+    height: 450px !important;
+    max-height: 450px !important;
+    object-fit: cover !important;
     border-radius: 16px;
     transition: all 0.4s ease;
     position: relative;
     z-index: 2;
     object-position: center bottom;
+    display: block;
 }
 
 .pilates__image:hover .main__image {
@@ -299,9 +303,30 @@
     filter: brightness(1.15) contrast(1.15) saturate(1.2) sharpness(1.3);
 }
 
-/* ===========================================
-   IMAGE OPTIMIZATION FOR SMOOTH SCROLLING
-   =========================================== */
+/* Responsive Pilates image sizing */
+@media (max-width: 768px) {
+    .pilates__image {
+        height: 350px !important;
+        max-height: 350px !important;
+    }
+    
+    .pilates__image .main__image {
+        height: 350px !important;
+        max-height: 350px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .pilates__image {
+        height: 300px !important;
+        max-height: 300px !important;
+    }
+    
+    .pilates__image .main__image {
+        height: 300px !important;
+        max-height: 300px !important;
+    }
+}
 .set-bg {
     background-size: cover;
     background-position: center;
