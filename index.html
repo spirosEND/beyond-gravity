@@ -30,27 +30,61 @@
     <!-- SlickNav Mobile Menu -->
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <!-- Preload critical images for smoother transitions -->
-    <!-- Preload WebP first, fallback to JPG -->
+    <!-- Critical Resource Prioritization -->
+    <!-- Preload critical hero image first -->
     <link rel="preload" as="image" href="img/hero/hero-2.webp" onerror="this.href='img/hero/hero-2.JPG'">
-    <link rel="preload" as="image" href="img/about/welcome1.webp" onerror="this.href='img/about/welcome1.jpg'">
-    <link rel="preload" as="image" href="img/about/welcome2.webp" onerror="this.href='img/about/welcome2.jpg'">
-    <link rel="preload" as="image" href="img/about/welcome3.webp" onerror="this.href='img/about/welcome3.jpg'">
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="css/style.css" as="style">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" as="style">
+    
+    <!-- Defer non-critical about images -->
+    <link rel="preload" as="image" href="img/about/welcome1.webp" onerror="this.href='img/about/welcome1.jpg'" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="img/about/welcome2.webp" onerror="this.href='img/about/welcome2.jpg'" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="img/about/welcome3.webp" onerror="this.href='img/about/welcome3.jpg'" media="(min-width: 768px)">
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        /* Critical styles for hero section */
+        .hero__text_new {
+            padding: 100px 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 30px;
+            min-height: auto;
+        }
+        .hero__title_new {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin: 0;
+            color: #ffffff;
+            text-align: right;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
+        }
+        .hero__logo_white {
+            max-height: 200px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+    </style>
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    <!-- Image format detection -->
-    <script>
-        // Check if WebP is supported
-        function checkWebPSupport() {
-            const webp = new Image();
-            webp.onload = webp.onerror = function() {
-                console.log('WebP support:', webp.height === 2);
-            };
-            webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-        }
-        checkWebPSupport();
-    </script>
 </head>
 
 <body>
@@ -179,85 +213,85 @@
         <div class="container">
             <div class="gallery__masonry">
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0221.jpg">
-                    <img src="img/gallery2/0221.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0221.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0063.jpg">
-                    <img src="img/gallery2/0063.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0063.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0155.jpg">
-                    <img src="img/gallery2/0155.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0155.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0010.jpg">
-                    <img src="img/gallery2/0010.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0010.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0272.jpg">
-                    <img src="img/gallery2/0272.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0272.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0117.jpg">
-                    <img src="img/gallery2/0117.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0117.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0208.jpg">
-                    <img src="img/gallery2/0208.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0208.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0009.jpg">
-                    <img src="img/gallery2/0009.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0009.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0169.jpg">
-                    <img src="img/gallery2/0169.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0169.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0070.jpg">
-                    <img src="img/gallery2/0070.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0070.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0249.jpg">
-                    <img src="img/gallery2/0249.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0249.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0013.jpg">
-                    <img src="img/gallery2/0013.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0013.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0192.jpg">
-                    <img src="img/gallery2/0192.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0192.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0142.jpg">
-                    <img src="img/gallery2/0142.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0142.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0318.jpg">
-                    <img src="img/gallery2/0318.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0318.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0016.jpg">
-                    <img src="img/gallery2/0016.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0016.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0186.jpg">
-                    <img src="img/gallery2/0186.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0186.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0127.jpg">
-                    <img src="img/gallery2/0127.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0127.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0061.jpg">
-                    <img src="img/gallery2/0061.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0061.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0231.jpg">
-                    <img src="img/gallery2/0231.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0231.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0160.jpg">
-                    <img src="img/gallery2/0160.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0160.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0113.jpg">
-                    <img src="img/gallery2/0113.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0113.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0200.jpg">
-                    <img src="img/gallery2/0200.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0200.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0150.jpg">
-                    <img src="img/gallery2/0150.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0150.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0290.jpg">
-                    <img src="img/gallery2/0290.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0290.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0174.jpg">
-                    <img src="img/gallery2/0174.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0174.jpg" alt="Gallery Image" loading="lazy">
                 </div>
                 <div class="gallery__item gallery__item--small" data-src="img/gallery2/0143.jpg">
-                    <img src="img/gallery2/0143.jpg" alt="Gallery Image">
+                    <img src="img/gallery2/0143.jpg" alt="Gallery Image" loading="lazy">
                 </div>
             </div>
         </div>
@@ -268,7 +302,7 @@
     <div class="gallery-modal" id="galleryModal">
         <div class="gallery-modal__content">
             <span class="gallery-modal__close">&times;</span>
-            <img class="gallery-modal__img" id="modalImg" src="" alt="Gallery Image">
+            <img class="gallery-modal__img" id="modalImg" src="" alt="Gallery Image" loading="lazy">
         </div>
     </div>
     <!-- Gallery Modal End -->
@@ -342,7 +376,10 @@
                 <div class="col-lg-6">
                     <div class="pilates__image__wrapper">
                         <div class="pilates__image">
-                            <img src="img/about/welcome1.JPG" alt="Pilates Class" class="main__image">
+                            <picture>
+                                <source srcset="img/about/welcome1.webp" type="image/webp">
+                                <img src="img/about/welcome1.jpg" alt="Pilates Class" class="main__image">
+                            </picture>
                         </div>
                     </div>
                 </div>
