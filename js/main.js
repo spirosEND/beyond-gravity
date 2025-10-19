@@ -15,8 +15,50 @@
         Preloader
     --------------------*/
     $(window).on('load', function () {
-        $(".loader").fadeOut();
-        $("#preloader").delay(200).fadeOut("slow");
+        // Wait for all images to load before hiding preloader
+        const images = document.querySelectorAll('img, .set-bg');
+        let loadedImages = 0;
+        const totalImages = images.length;
+        
+        function checkAllImagesLoaded() {
+            loadedImages++;
+            if (loadedImages >= totalImages) {
+                // All images loaded, hide preloader with smooth transition
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }
+        }
+        
+        // Check if images are already loaded
+        images.forEach(img => {
+            if (img.tagName === 'IMG') {
+                if (img.complete) {
+                    checkAllImagesLoaded();
+                } else {
+                    img.addEventListener('load', checkAllImagesLoaded);
+                    img.addEventListener('error', checkAllImagesLoaded); // Handle broken images
+                }
+            } else {
+                // For background images, assume they're loaded after a short delay
+                setTimeout(checkAllImagesLoaded, 100);
+            }
+        });
+        
+        // Fallback: hide preloader after 3 seconds regardless
+        setTimeout(() => {
+            const preloader = document.getElementById('preloader');
+            if (preloader && preloader.style.display !== 'none') {
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        }, 3000);
     });
 
     /*------------------
@@ -24,7 +66,7 @@
     --------------------*/
     $('.set-bg').each(function () {
         try {
-            const bg = $(this).data('set-bg');
+            const bg = $(this).data('setbg');
             if (bg && bg.trim() !== '') {
                 $(this).css('background-image', 'url(' + bg + ')');
             } else {
