@@ -67,8 +67,22 @@
     $('.set-bg').each(function () {
         try {
             const bg = $(this).data('setbg');
+            console.log('Setting background for element:', this, 'with image:', bg);
             if (bg && bg.trim() !== '') {
-                $(this).css('background-image', 'url(' + bg + ')');
+                // Test if image exists before setting
+                const img = new Image();
+                img.onload = function() {
+                    console.log('Image loaded successfully:', bg);
+                    $(this).css('background-image', 'url(' + bg + ')');
+                }.bind(this);
+                img.onerror = function() {
+                    console.error('Failed to load image:', bg);
+                    // Try alternative path
+                    const altPath = bg.replace('img/', './img/');
+                    console.log('Trying alternative path:', altPath);
+                    $(this).css('background-image', 'url(' + altPath + ')');
+                }.bind(this);
+                img.src = bg;
             } else {
                 console.warn('Background image data not found for element:', this);
             }

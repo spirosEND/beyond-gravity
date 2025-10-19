@@ -299,9 +299,33 @@
     filter: brightness(1.15) contrast(1.15) saturate(1.2) sharpness(1.3);
 }
 
-/* ===========================================
-   IMAGE OPTIMIZATION FOR SMOOTH SCROLLING
-   =========================================== */
+/* Fallback background images for GitHub Pages */
+.home__about__pic__item.large-item {
+    background-image: url('img/about/welcome1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home__about__pic__item__inner:nth-child(1) {
+    background-image: url('img/about/welcome2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home__about__pic__item__inner:nth-child(2) {
+    background-image: url('img/about/welcome3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pilates__image .main__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .set-bg {
     background-size: cover;
     background-position: center;
